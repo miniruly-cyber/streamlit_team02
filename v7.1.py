@@ -107,7 +107,7 @@ body { background: #F5FBFB; }
   position: sticky; bottom: 0; z-index: 998; margin-top: 16px;
   background: #FFFFFF; border-radius: 18px; padding: 6px 8px;
   border: 1px solid rgba(0,0,0,.06); box-shadow: 0 -6px 18px rgba(0,0,0,.05);
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
 }
 .tabbtn {
   text-align: center; padding: 10px 6px; border-radius: 12px; cursor: pointer; user-select: none;
@@ -654,7 +654,7 @@ def render_help():
     )
 
 def render_tabbar():
-    tabs = [("chat", "대화"), ("settings", "설정"), ("profile", "프로필"), ("help", "도움말"), ("save", "저장하기")]
+    tabs = [("chat", "대화"), ("settings", "설정"), ("profile", "프로필"), ("help", "도움말")]
     st.markdown('<div class="tabbar">', unsafe_allow_html=True)
     cols = st.columns(len(tabs), gap="small")
     for i, (key, label) in enumerate(tabs):
