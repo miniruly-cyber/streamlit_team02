@@ -14,6 +14,89 @@ from typing import Optional, Tuple, List, Dict
 
 import streamlit as st
 
+# =========================
+# 온보딩 화면코드 (교체용)
+# =========================
+import streamlit as st
+
+# set_page_config는 앱당 1회만 호출 가능 → 중복 호출 예방
+if "_page_config_set" not in st.session_state:
+    try:
+        st.set_page_config(page_title="AI 자기소개서", page_icon="🤖", layout="centered")
+    except Exception:
+        pass
+    st.session_state["_page_config_set"] = True
+
+# 온보딩 상태 기본값
+if "onboarded" not in st.session_state:
+    st.session_state.onboarded = False
+
+# 전역 스타일
+st.markdown("""
+<style>
+body { background-color:#F5FBFB; }
+
+.topbar {
+  position: sticky; top: 0; z-index: 1000;
+  width: 100%;
+  height: 72px;
+  background: linear-gradient(90deg, #0FBDBD 0%, #099494 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 800; font-size: 20px;
+}
+
+.onboard-wrap { display:flex; justify-content:center; padding:40px 12px 24px; }
+.onboard-card {
+  max-width: 740px; width: 92%;
+  background:#ffffff; border-radius: 18px;
+  border:1px solid rgba(0,0,0,.06);
+  padding: 40px 28px; text-align:center;
+  box-shadow: 0 10px 24px rgba(0,0,0,.05);
+}
+.robot {
+  width:88px; height:88px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  background:#E6FBFB; border:1px solid rgba(0,0,0,.06);
+  font-size:42px;
+}
+.title { margin-top:18px; font-size:26px; font-weight:800; color:#111; }
+.desc  { margin-top:10px; color:#475569; line-height:1.6; font-size:15px; }
+.start { margin:26px auto 0; max-width:320px; }
+</style>
+""", unsafe_allow_html=True)
+
+def _render_topbar():
+    st.markdown('<div class="topbar">AI 자기소개서</div>', unsafe_allow_html=True)
+
+def render_onboarding():
+    """온보딩 화면을 그리고, 시작하기 클릭 시 onboarded=True로 전환.
+    버튼 클릭 자체가 Streamlit의 자동 재실행을 유발하므로 별도 rerun 호출 불필요.
+    """
+    _render_topbar()
+    st.markdown('<div class="onboard-wrap"><div class="onboard-card">', unsafe_allow_html=True)
+    st.markdown('<div class="robot">🤖</div>', unsafe_allow_html=True)
+    st.markdown('<div class="title">AI 자기소개서 작성</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="desc">AI가 도와주는 맞춤형 자기소개서를 작성해보세요.<br>'
+        '간단한 대화를 통해 전문적인 자기소개서를 완성할 수 있습니다.</div>',
+        unsafe_allow_html=True
+    )
+    if st.button("시작하기", key="__start__", use_container_width=True):
+        st.session_state.onboarded = True
+    st.markdown('</div></div>', unsafe_allow_html=True)
+
+# ---- 온보딩 게이트 ----
+# 1) 아직 시작 전이면 온보딩을 그리고 즉시 중단(st.stop)
+# 2) 버튼을 누르면 onboarded=True가 되고, 위젯 상호작용으로 스크립트가 자동 재실행
+# 3) 재실행 시 아래 조건이 False가 되어, 이후(채팅 등) 기존 코드가 실행됨
+if not st.session_state.onboarded:
+    render_onboarding()
+    st.stop()
+# =========================
+# 온보딩 화면코드 끝
+# =========================
+
+
 # ===== 문서 생성을 위한 라이브러리 =====
 try:
     from docx import Document
