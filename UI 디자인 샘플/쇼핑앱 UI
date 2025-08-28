@@ -1,0 +1,43 @@
+# 파일명: ecommerce_ui.py
+import streamlit as st
+
+# 페이지 기본 설정
+st.set_page_config(page_title="쇼핑 UI 샘플", layout="wide")
+
+# ---------------------------
+# 상단: 카테고리 메뉴
+# ---------------------------
+st.sidebar.title("카테고리")
+categories = ["의류", "전자제품", "도서", "생활용품"]
+selected_category = st.sidebar.radio("카테고리 선택", categories)
+
+# ---------------------------
+# 인기 상품 슬라이더
+# ---------------------------
+st.header("인기 상품")
+st.write(f"선택 카테고리: {selected_category}")
+
+cols = st.columns(3)
+for i, col in enumerate(cols):
+    col.image("https://via.placeholder.com/150", caption=f"상품 {i+1}")
+    col.write("₩19,900")
+    col.button("구매", key=f"buy{i}")
+
+# ---------------------------
+# 추천 상품 그리드
+# ---------------------------
+st.header("추천 상품")
+for row in range(2):
+    cols = st.columns(4)
+    for i, col in enumerate(cols):
+        idx = row*4 + i + 1
+        col.image("https://via.placeholder.com/120", caption=f"추천 상품 {idx}")
+        col.write(f"₩{idx*1000}")
+        col.button("장바구니", key=f"cart{idx}")
+
+# ---------------------------
+# 하단: 장바구니 요약
+# ---------------------------
+st.sidebar.header("장바구니")
+st.sidebar.write("상품 3개 선택됨 (샘플)")
+st.sidebar.button("결제하기")
