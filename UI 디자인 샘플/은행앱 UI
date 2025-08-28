@@ -1,0 +1,46 @@
+# 파일명: finance_ui.py
+import streamlit as st
+import pandas as pd
+
+# 페이지 기본 설정
+st.set_page_config(page_title="금융 앱 UI 샘플", layout="wide")
+
+# ---------------------------
+# 계좌 잔액 카드
+# ---------------------------
+st.header("내 계좌 잔액")
+st.metric("총 잔액", "₩3,500,000")
+st.metric("예상 수익", "₩120,000")
+
+# ---------------------------
+# 최근 거래 내역
+# ---------------------------
+st.subheader("최근 거래 내역")
+data = {
+    "날짜": ["2025-08-25", "2025-08-26", "2025-08-27"],
+    "내역": ["편의점 결제", "월세 납부", "카페 결제"],
+    "금액": ["₩5,000", "₩500,000", "₩8,000"]
+}
+df = pd.DataFrame(data)
+st.table(df)
+
+# ---------------------------
+# 지출 카테고리 그래프
+# ---------------------------
+st.subheader("지출 카테고리")
+import matplotlib.pyplot as plt
+
+categories = ["식비", "주거", "교통", "쇼핑"]
+values = [150000, 500000, 80000, 60000]
+
+fig, ax = plt.subplots()
+ax.pie(values, labels=categories, autopct='%1.1f%%', startangle=90)
+ax.axis("equal")
+st.pyplot(fig)
+
+# ---------------------------
+# 빠른 송금 버튼
+# ---------------------------
+st.subheader("빠른 송금")
+st.button("친구에게 송금")
+st.button("계좌이체")
