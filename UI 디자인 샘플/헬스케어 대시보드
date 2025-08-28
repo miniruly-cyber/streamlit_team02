@@ -1,0 +1,40 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+st.set_page_config(page_title="헬스케어 대시보드", layout="wide")
+
+st.title("🏥 헬스케어 대시보드")
+st.markdown("건강 상태를 모니터링하는 대시보드입니다.")
+
+# 가상 데이터 생성
+dates = pd.date_range("2025-01-01", periods=30)
+data = pd.DataFrame({
+    "날짜": dates,
+    "심박수": np.random.randint(60, 100, size=30),
+    "혈압(수축기)": np.random.randint(110, 150, size=30),
+    "혈압(이완기)": np.random.randint(70, 95, size=30),
+    "혈당": np.random.randint(80, 150, size=30)
+})
+
+# 최신 상태 표시
+st.subheader("📊 최신 건강 상태")
+latest = data.iloc[-1]
+st.metric("심박수", f"{latest['심박수']} bpm")
+st.metric("혈압", f"{latest['혈압(수축기)']}/{latest['혈압(이완기)']} mmHg")
+st.metric("혈당", f"{latest['혈당']} mg/dL")
+
+# 그래프
+st.subheader("📈 건강 데이터 추세")
+fig, ax = plt.subplots(figsize=(10,5))
+ax.plot(data["날짜"], data["심박수"], label="심박수")
+ax.plot(data["날짜"], data["혈압(수축기)"], label="혈압(수축기)")
+ax.plot(data["날짜"], data["혈압(이완기)"], label="혈압(이완기)")
+ax.plot(data["날짜"], data["혈당"], label="혈당")
+ax.legend()
+st.pyplot(fig)
+
+# 데이터 테이블
+st.subheader("📋 원시 데이터")
+st.dataframe(data)
