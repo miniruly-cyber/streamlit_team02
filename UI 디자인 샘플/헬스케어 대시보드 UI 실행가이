@@ -1,0 +1,67 @@
+📄 README.md
+# 🏥 헬스케어 대시보드
+
+이 프로젝트는 **Streamlit**을 활용해 제작한 헬스케어 대시보드 샘플입니다.  
+심박수, 혈압, 혈당 등 건강 데이터를 시각화하고 최신 상태를 모니터링할 수 있습니다.
+
+![demo](https://via.placeholder.com/600x300?text=Healthcare+Dashboard+Demo)
+
+---
+
+## 🚀 실행 방법
+
+### 1. 저장소 클론
+```bash
+git clone https://github.com/USERNAME/healthcare-dashboard.git
+cd healthcare-dashboard
+
+2. 가상환경 (선택)
+python -m venv venv
+source venv/bin/activate     # Mac/Linux
+venv\Scripts\activate        # Windows
+
+3. 패키지 설치
+pip install -r requirements.txt
+
+4. 앱 실행
+streamlit run healthcare_dashboard.py
+
+
+실행 후 브라우저에서 자동으로 열리며, 기본 주소는:
+
+👉 http://localhost:8501
+
+📂 프로젝트 구조
+healthcare_dashboard.py   # 메인 실행 파일
+requirements.txt         # 필요한 패키지 목록
+README.md                # 실행 가이드
+
+✨ 주요 기능
+
+최신 건강 상태 표시: 심박수, 혈압, 혈당
+
+건강 데이터 추세 그래프: 심박수, 혈압(수축기/이완기), 혈당 추세 시각화
+
+원시 데이터 테이블: 30일간 가상 데이터 확인
+
+🛠️ 기술 스택
+
+Python 3.8+
+
+Streamlit 1.x
+
+Pandas
+
+NumPy
+
+Matplotlib
+
+
+---
+
+### 📄 requirements.txt
+```txt
+streamlit>=1.32.0
+pandas>=2.0.0
+numpy>=1.25.0
+matplotlib>=3.7.0
