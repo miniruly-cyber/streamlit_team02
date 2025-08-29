@@ -1,0 +1,63 @@
+📄 README.md
+# 🎓 교육 앱 UI 샘플
+
+이 프로젝트는 **Streamlit**을 활용해 제작한 온라인 강의 플랫폼 UI 샘플입니다.  
+검색창, 추천 강의, 내 강의 목록, 학습 현황 그래프 등 교육 플랫폼 기본 기능을 시각화합니다.
+
+![demo](https://via.placeholder.com/600x300?text=Education+UI+Demo)
+
+---
+
+## 🚀 실행 방법
+
+### 1. 저장소 클론
+```bash
+git clone https://github.com/USERNAME/education-ui-sample.git
+cd education-ui-sample
+
+2. 가상환경 (선택)
+python -m venv venv
+source venv/bin/activate     # Mac/Linux
+venv\Scripts\activate        # Windows
+
+3. 패키지 설치
+pip install -r requirements.txt
+
+4. 앱 실행
+streamlit run education_ui.py
+
+
+실행 후 브라우저에서 자동으로 열리며, 기본 주소는:
+
+👉 http://localhost:8501
+
+📂 프로젝트 구조
+education_ui.py   # 메인 실행 파일
+requirements.txt  # 필요한 패키지 목록
+README.md         # 실행 가이드
+
+✨ 주요 기능
+
+강의 검색: 검색창을 통해 강의 검색 가능
+
+추천 강의 섹션: 이미지, 강의 제목, 진행률, 수강 버튼
+
+내 강의 목록 카드: 진행 중인 강의 확인 및 수강 계속하기 버튼
+
+학습 현황 그래프: 강의 모듈별 진행률 시각화 (Matplotlib 사용)
+
+🛠️ 기술 스택
+
+Python 3.8+
+
+Streamlit 1.x
+
+Matplotlib
+
+
+---
+
+### 📄 requirements.txt
+```txt
+streamlit>=1.32.0
+matplotlib>=3.7.0
