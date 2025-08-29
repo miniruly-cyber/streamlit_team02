@@ -1,0 +1,66 @@
+📄 README.md
+# 💰 금융 앱 UI 샘플
+
+이 프로젝트는 **Streamlit**을 활용해 제작한 은행/금융 앱 UI 샘플입니다.  
+계좌 잔액, 최근 거래 내역, 지출 카테고리 그래프, 빠른 송금 버튼 등 기본 금융 기능을 시각화합니다.
+
+![demo](https://via.placeholder.com/600x300?text=Finance+UI+Demo)
+
+---
+
+## 🚀 실행 방법
+
+### 1. 저장소 클론
+```bash
+git clone https://github.com/USERNAME/finance-ui-sample.git
+cd finance-ui-sample
+
+2. 가상환경 (선택)
+python -m venv venv
+source venv/bin/activate     # Mac/Linux
+venv\Scripts\activate        # Windows
+
+3. 패키지 설치
+pip install -r requirements.txt
+
+4. 앱 실행
+streamlit run finance_ui.py
+
+
+실행 후 브라우저에서 자동으로 열리며, 기본 주소는:
+
+👉 http://localhost:8501
+
+📂 프로젝트 구조
+finance_ui.py     # 메인 실행 파일
+requirements.txt  # 필요한 패키지 목록
+README.md         # 실행 가이드
+
+✨ 주요 기능
+
+내 계좌 잔액 카드: 총 잔액 및 예상 수익 표시
+
+최근 거래 내역 테이블: 날짜, 내역, 금액 확인
+
+지출 카테고리 그래프: Matplotlib 파이차트로 시각화
+
+빠른 송금 버튼: 친구 송금, 계좌이체 버튼
+
+🛠️ 기술 스택
+
+Python 3.8+
+
+Streamlit 1.x
+
+Pandas
+
+Matplotlib
+
+
+---
+
+### 📄 requirements.txt
+```txt
+streamlit>=1.32.0
+pandas>=2.0.0
+matplotlib>=3.7.0
